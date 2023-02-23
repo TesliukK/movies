@@ -1,5 +1,4 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-
 import {genreService} from "../../services";
 
 let initialState = {
@@ -7,37 +6,31 @@ let initialState = {
     errors: null,
     loading: null,
     movieByGenre: null
-
-
-}
+};
 
 const getAll = createAsyncThunk(
     'genreSlice/getAll',
     async (_, thunkAPI) => {
         try {
-            const {data} = await genreService.getAll()
-            return data.genres
-
-
+            const {data} = await genreService.getAll();
+            return data.genres;
         } catch (e) {
-            return thunkAPI.rejectWithValue(e.response.data)
+            return thunkAPI.rejectWithValue(e.response.data);
         }
     }
 );
 
-// const getMoviesByGenre = createAsyncThunk(
-//     'genreSlice/getMoviesByGenre',
-//     async (genreId, thunkAPI) => {
-//         try {
-//             const { data } = await genreService.getMoviesByGenreId(genreId);
-//             console.log(data.results);
-//             return data.results;
-//
-//         } catch (e) {
-//             return thunkAPI.rejectWithValue(e.response.data);
-//         }
-//     }
-// );
+const getMoviesByGenreId = createAsyncThunk(
+    'genreSlice/getMoviesByGenreId',
+    async (genreId, thunkAPI) => {
+        try {
+            const {data} = await genreService.getMoviesByGenreId(genreId);
+            return data.results;
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+);
 
 
 const genreSlice = createSlice({
@@ -47,7 +40,10 @@ const genreSlice = createSlice({
     extraReducers: builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                state.genres = action.payload
+                state.genres = action.payload;
+            })
+            .addCase(getMoviesByGenreId.fulfilled, (state, action) => {
+                state.movieByGenre = action.payload;
             })
 });
 
@@ -56,12 +52,10 @@ const {reducer: genreReducer, actions: {setSelectedGenre}} = genreSlice;
 const genreAction = {
     getAll,
     setSelectedGenre,
-    // getMoviesByGenre
-
-}
+    getMoviesByGenreId
+};
 
 export {
-    genreReducer,
-    genreAction
-}
-
+    genreAction,
+    genreReducer
+};

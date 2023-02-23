@@ -23,39 +23,52 @@ const getAll = createAsyncThunk(
     }
 );
 
+const getMovieById = createAsyncThunk(
+    "movieSlice/getMovieById",
+    async (id, thunkAPI) => {
+        try {
+            const { data } = await movieService.getMovieById(id);
+            console.log(data);
+            return data;
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+);
+
 
 const movieSlice = createSlice({
-    name: 'movieSlice',
+    name: "movieSlice",
     initialState,
     reducers: {
         setSelectedMovie: (state, action) => {
-            state.selectedMovie = action.payload
-        }
+            state.selectedMovie = action.payload;
+        },
     },
-    extraReducers: builder =>
+    extraReducers: (builder) =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                const {results, page} = action.payload;
-                state.movies = results
-                state.page = page
-                state.loading = false
+                const { results, page } = action.payload;
+                state.movies = results;
+                state.page = page;
+                state.loading = false;
+            })
+            .addCase(getMovieById.fulfilled, (state, action) => {
+                state.selectedMovie = action.payload;
+                state.loading = false;
             })
             .addDefaultCase((state, action) => {
-                const [actionStatus] = action.type.split('/').slice(-1);
-                state.loading = actionStatus === 'pending';
-            })
-
-
+                const [actionStatus] = action.type.split("/").slice(-1);
+                state.loading = actionStatus === "pending";
+            }),
 });
 
-const {reducer: movieReducer, actions: {setSelectedMovie}} = movieSlice;
+const { reducer: movieReducer, actions: { setSelectedMovie } } = movieSlice;
 
 const movieAction = {
     getAll,
+    getMovieById,
     setSelectedMovie,
 };
 
-export {
-    movieReducer,
-    movieAction
-};
+export { movieReducer, movieAction };

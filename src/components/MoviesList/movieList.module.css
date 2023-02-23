@@ -2,4 +2,12 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    background: black;
+}
+
+.btn {
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    background: black;
 }

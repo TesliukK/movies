@@ -24,8 +24,7 @@ const MoviesList = () => {
             <div className={css.container}>
                 {movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
             </div>
-            <hr/>
-            <div>
+            <div className={css.btn}>
                 <button disabled={page <= 1}
                         onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>prev
                 </button>

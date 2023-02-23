@@ -1,13 +1,11 @@
 import React from 'react';
-import {MoviesList} from "../../components";
-import {GenreList} from "../../components/GenreList/GenreList";
+import {GenreList, MoviesList} from "../../components";
+import css from './moviePage.module.css';
 
 const MoviesPage = () => {
     return (
-        <div>
-            <hr/>
+        <div className={css.block}>
             <GenreList/>
-            <hr/>
             <MoviesList/>
         </div>
     );
