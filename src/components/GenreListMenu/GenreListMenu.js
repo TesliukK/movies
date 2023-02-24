@@ -1,7 +1,9 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {genreAction} from "../../redux";
 import {NavLink} from "react-router-dom";
+
+import {genreAction} from "../../redux";
+import css from './genreListMenu.module.css';
 
 const GenreListMenu = ({genre}) => {
     const dispatch = useDispatch();
@@ -12,7 +14,7 @@ const GenreListMenu = ({genre}) => {
     };
 
     return (
-        <div>
+        <div className={css.link}>
             <NavLink onClick={handleClick} to={'/moviesByGenre'}>{name}</NavLink>
         </div>
     );

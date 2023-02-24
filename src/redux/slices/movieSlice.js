@@ -8,6 +8,7 @@ const initialState = {
     loading: null,
     selectedMovie: null,
     page: null,
+    searchResults: [],
 
 };
 
@@ -28,13 +29,25 @@ const getMovieById = createAsyncThunk(
     async (id, thunkAPI) => {
         try {
             const { data } = await movieService.getMovieById(id);
-            console.log(data);
             return data;
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data);
         }
     }
 );
+
+const searchMovies = createAsyncThunk(
+    "movieSlice/searchMovies",
+    async (query, thunkAPI) => {
+        try {
+            const { data } = await movieService.searchMovies(query);
+            return data.results;
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+);
+
 
 
 const movieSlice = createSlice({
@@ -43,6 +56,9 @@ const movieSlice = createSlice({
     reducers: {
         setSelectedMovie: (state, action) => {
             state.selectedMovie = action.payload;
+        },
+        setSearchResults: (state, action) => {
+            state.searchResults = action.payload;
         },
     },
     extraReducers: (builder) =>
@@ -57,18 +73,23 @@ const movieSlice = createSlice({
                 state.selectedMovie = action.payload;
                 state.loading = false;
             })
+            .addCase(searchMovies.fulfilled, (state, action) => {
+                state.searchResults = action.payload;
+            })
             .addDefaultCase((state, action) => {
                 const [actionStatus] = action.type.split("/").slice(-1);
                 state.loading = actionStatus === "pending";
             }),
 });
 
-const { reducer: movieReducer, actions: { setSelectedMovie } } = movieSlice;
+const { reducer: movieReducer, actions: { setSelectedMovie, setSearchResults } } = movieSlice;
 
 const movieAction = {
     getAll,
     getMovieById,
     setSelectedMovie,
+    searchMovies,
+    setSearchResults
 };
 
 export { movieReducer, movieAction };

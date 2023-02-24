@@ -1,14 +1,7 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { movieAction } from "../../redux";
-
+import React from "react";
+import { useSelector } from "react-redux";
 const MovieInfo = () => {
     const { selectedMovie } = useSelector((state) => state.movies);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(movieAction.getMovieById());
-    }, [dispatch]);
 
     return (
         <div>

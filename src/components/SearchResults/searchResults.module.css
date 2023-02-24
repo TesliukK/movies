@@ -1,5 +1,7 @@
-.block {
+.block{
     display: flex;
     justify-content: space-around;
-    background: darkslategrey;
+    flex-wrap: wrap;
+    background: black;
+
 }

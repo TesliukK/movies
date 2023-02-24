@@ -1,13 +1,14 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
 
-import { Header} from "../components";
+import {GenreList, Header} from "../components";
 
 
 const MainLayout = () => {
     return (
         <div>
             <Header/>
+            <GenreList/>
             <Outlet/>
         </div>
     );

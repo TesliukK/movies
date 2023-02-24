@@ -3,7 +3,7 @@ import {useEffect} from "react";
 
 import {GenreListMenu} from "../GenreListMenu/GenreListMenu";
 import {genreAction} from "../../redux";
-// import css from './genreList.module.css';
+import css from './genreList.module.css';
 
 const GenreList = () => {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const GenreList = () => {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className={css.block}>
                 {genres.map(genre => <GenreListMenu key={genre.id} genre={genre}/>)}
         </div>
     );
