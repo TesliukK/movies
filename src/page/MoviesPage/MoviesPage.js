@@ -1,5 +1,5 @@
 import React from 'react';
-import { MoviesList} from "../../components";
+import {MoviesList} from "../../components";
 import css from './moviePage.module.css';
 
 
