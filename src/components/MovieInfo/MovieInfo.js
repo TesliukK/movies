@@ -1,7 +1,23 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {movieAction} from "../../redux";
+
+
 const MovieInfo = () => {
+    const dispatch = useDispatch();
     const { selectedMovie } = useSelector((state) => state.movies);
+
+    useEffect(() => {
+        const storedMovie = localStorage.getItem("selectedMovie");
+        if (storedMovie) {
+            dispatch(movieAction.setSelectedMovie(JSON.parse(storedMovie)));
+        }
+    }, [dispatch]);
+
+    const handleSelectMovie = (movie) => {
+        dispatch(movieAction.setSelectedMovie(movie));
+        localStorage.setItem("selectedMovie", JSON.stringify(movie));
+    };
 
     return (
         <div>
@@ -13,9 +29,9 @@ const MovieInfo = () => {
                     />
                 </div>
             )}
+            <button onClick={() => handleSelectMovie(selectedMovie)}>Select Movie</button>
         </div>
     );
 };
 
 export { MovieInfo };
-

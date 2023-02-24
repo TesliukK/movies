@@ -5,7 +5,8 @@ let initialState = {
     genres: [],
     errors: null,
     loading: null,
-    movieByGenre: null
+    movieByGenre: null,
+    moviesByGenreError: null
 };
 
 const getAll = createAsyncThunk(
