@@ -18,3 +18,4 @@ const MovieInfo = () => {
 };
 
 export { MovieInfo };
+

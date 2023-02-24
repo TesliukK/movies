@@ -7,6 +7,7 @@ import {MovieByGenre, MovieInfo} from "./components";
 import {SearchResult} from "./components";
 
 
+
 const App = () => {
     return (
         <Routes>
