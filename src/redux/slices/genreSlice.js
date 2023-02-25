@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {genreService} from "../../services";
 
 let initialState = {
@@ -6,7 +7,7 @@ let initialState = {
     errors: null,
     loading: null,
     movieByGenre: null,
-    moviesByGenreError: null
+
 };
 
 const getAll = createAsyncThunk(

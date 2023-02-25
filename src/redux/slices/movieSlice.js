@@ -24,17 +24,19 @@ const getAll = createAsyncThunk(
     }
 );
 
-const getMovieById = createAsyncThunk(
-    "movieSlice/getMovieById",
-    async (id, thunkAPI) => {
+const getById = createAsyncThunk(
+    'movieSlice/getById',
+    async ({id}, thunkAPI) => {
         try {
-            const { data } = await movieService.getMovieById(id);
+            const { data } = await movieService.getById(id);
             return data;
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data);
         }
     }
 );
+
+
 
 const searchMovies = createAsyncThunk(
     "movieSlice/searchMovies",
@@ -69,10 +71,7 @@ const movieSlice = createSlice({
                 state.page = page;
                 state.loading = false;
             })
-            .addCase(getMovieById.fulfilled, (state, action) => {
-                state.selectedMovie = action.payload;
-                state.loading = false;
-            })
+
             .addCase(searchMovies.fulfilled, (state, action) => {
                 state.searchResults = action.payload;
             })
@@ -82,14 +81,14 @@ const movieSlice = createSlice({
             }),
 });
 
-const { reducer: movieReducer, actions: { setSelectedMovie, setSearchResults } } = movieSlice;
+const { reducer: movieReducer, actions: { setSelectedMovie, setSearchResults} } = movieSlice;
 
 const movieAction = {
     getAll,
-    getMovieById,
     setSelectedMovie,
     searchMovies,
-    setSearchResults
+    setSearchResults,
+    getById
 };
 
 export { movieReducer, movieAction };
