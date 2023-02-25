@@ -7,6 +7,7 @@ import css from './searchMovie.module.css';
 
 const SearchMovies = () => {
     const [query, setQuery] = useState("");
+
     const dispatch = useDispatch();
 
     const handleSearch = () => {
@@ -20,20 +21,17 @@ const SearchMovies = () => {
     return (
         <div>
             <form className={css.search}>
-
-                    <input className={css.input}
-                           type="text"
-                           placeholder="Search for movies"
-                           value={query}
-                           onChange={(e) => setQuery(e.target.value)}
-                    />
-                    <NavLink to={'/searchResults'}  >
-                        <button className={css.btn} disabled={!query} onClick={handleSearch}>SEARCH</button>
-                    </NavLink>
+                <input className={css.input}
+                       type="text"
+                       placeholder="Search for movies"
+                       value={query}
+                       onChange={(e) => setQuery(e.target.value)}/>
+                <NavLink to={'/searchResults'}>
+                    <button className={css.btn} disabled={!query} onClick={handleSearch}>SEARCH</button>
+                </NavLink>
             </form>
-
         </div>
     );
 };
 
-export default SearchMovies;
+export {SearchMovies};

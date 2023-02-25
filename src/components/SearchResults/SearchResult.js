@@ -6,9 +6,10 @@ import css from './searchResults.module.css';
 
 const SearchResult = () => {
     const {searchResults} = useSelector(state => state.movies);
+
     return (
         <div className={css.block}>
-            {searchResults && searchResults.map(movie =><MoviesListCard key={movie.id} movie={movie}/>)}
+            {searchResults && searchResults.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
         </div>
     );
 };

@@ -7,7 +7,6 @@ let initialState = {
     errors: null,
     loading: null,
     movieByGenre: null,
-
 };
 
 const getAll = createAsyncThunk(

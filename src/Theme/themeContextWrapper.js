@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {ThemeContext, themes} from "./themeContext";
 
-
-
 const ThemeContextWrapper = (props) => {
     const [theme, setTheme] = useState(themes.dark);
 
     const changeTheme = (theme) => {
         setTheme(theme);
-    }
+    };
 
     useEffect(() => {
         switch (theme) {
@@ -31,4 +29,4 @@ const ThemeContextWrapper = (props) => {
 }
 export {
     ThemeContextWrapper
-}
+};

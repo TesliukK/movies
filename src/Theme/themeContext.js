@@ -14,4 +14,4 @@ const ThemeContext = createContext({
 export {
     themes,
     ThemeContext
-}
+};

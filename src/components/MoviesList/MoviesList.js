@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useSearchParams} from "react-router-dom";
-
+import {Pagination} from "@mui/material";
 
 import {movieAction} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from './movieList.module.css';
-import {Pagination} from "@mui/material";
 
 
 const MoviesList = () => {
@@ -21,14 +20,14 @@ const MoviesList = () => {
     }, [dispatch, query])
 
     return (
-        <div >
+        <div>
             <div className={css.container}>
                 {movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
             </div>
             <div className={css.btnBlock}>
                 <Pagination
                     count={500}
-                    onChange={(event, value) => setQuery(query => ({ ...query, page: value }))}
+                    onChange={(event, value) => setQuery(query => ({...query, page: value}))}
                     disabled={page <= 0 || page >= 501}
                     color="primary"
                     shape="rounded"
@@ -36,13 +35,9 @@ const MoviesList = () => {
                     showFirstButton
                     showLastButton
                 />
-
             </div>
         </div>
-
-
     );
 };
-
 
 export {MoviesList};

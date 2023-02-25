@@ -3,10 +3,7 @@ import {MainLayout} from "./layouts";
 import {Navigate, Route, Routes} from "react-router-dom";
 
 import {MoviesPage} from "./page";
-import {MovieByGenre, MovieInfo} from "./components";
-import {SearchResult} from "./components";
-
-
+import {MovieByGenre, MovieInfo, SearchResult} from "./components";
 
 const App = () => {
     return (

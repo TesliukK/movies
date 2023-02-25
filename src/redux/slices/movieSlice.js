@@ -9,7 +9,6 @@ const initialState = {
     selectedMovie: null,
     page: null,
     searchResults: [],
-
 };
 
 const getAll = createAsyncThunk(
@@ -24,33 +23,17 @@ const getAll = createAsyncThunk(
     }
 );
 
-const getById = createAsyncThunk(
-    'movieSlice/getById',
-    async ({id}, thunkAPI) => {
-        try {
-            const { data } = await movieService.getById(id);
-            return data;
-        } catch (e) {
-            return thunkAPI.rejectWithValue(e.response.data);
-        }
-    }
-);
-
-
-
 const searchMovies = createAsyncThunk(
     "movieSlice/searchMovies",
     async (query, thunkAPI) => {
         try {
-            const { data } = await movieService.searchMovies(query);
+            const {data} = await movieService.searchMovies(query);
             return data.results;
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data);
         }
     }
 );
-
-
 
 const movieSlice = createSlice({
     name: "movieSlice",
@@ -63,15 +46,15 @@ const movieSlice = createSlice({
             state.searchResults = action.payload;
         },
     },
+
     extraReducers: (builder) =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                const { results, page } = action.payload;
+                const {results, page} = action.payload;
                 state.movies = results;
                 state.page = page;
                 state.loading = false;
             })
-
             .addCase(searchMovies.fulfilled, (state, action) => {
                 state.searchResults = action.payload;
             })
@@ -81,14 +64,14 @@ const movieSlice = createSlice({
             }),
 });
 
-const { reducer: movieReducer, actions: { setSelectedMovie, setSearchResults} } = movieSlice;
+const {reducer: movieReducer, actions: {setSelectedMovie, setSearchResults}} = movieSlice;
 
 const movieAction = {
     getAll,
     setSelectedMovie,
     searchMovies,
     setSearchResults,
-    getById
+
 };
 
-export { movieReducer, movieAction };
+export {movieReducer, movieAction};

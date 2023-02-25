@@ -15,7 +15,7 @@ const GenreList = () => {
 
     return (
         <div className={css.block}>
-                {genres.map(genre => <GenreListMenu key={genre.id} genre={genre}/>)}
+            {genres.map(genre => <GenreListMenu key={genre.id} genre={genre}/>)}
         </div>
     );
 };

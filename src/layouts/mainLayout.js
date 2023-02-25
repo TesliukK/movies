@@ -5,10 +5,11 @@ import {GenreList, Header} from "../components";
 import css from './mainLayout.module.css';
 
 const MainLayout = () => {
+
     return (
         <div className={css.block}>
-                <Header/>
-                <Outlet/>
+            <Header/>
+            <Outlet/>
             <GenreList/>
         </div>
     );
