@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import css from './movieInfo.module.css';
 import {Box, Rating} from "@mui/material";
 
+
 const MovieInfo = () => {
     const { selectedMovie } = useSelector((state) => state.movies);
 
@@ -29,9 +30,8 @@ const MovieInfo = () => {
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                 <Rating
                                     name="movie-rating"
-                                    value={selectedMovie.vote_average / 2} // потрібно ділити на 2, оскільки значення vote_average знаходиться в діапазоні від 0 до 10, а Rating очікує значення від 0 до 5
+                                    value={selectedMovie.vote_average / 2}
                                     precision={0.5}
-                                    emptyIcon={<MovieInfo style={{ opacity: 0.55 }} fontSize="inherit" />}
                                 />
                                 <Box sx={{ ml: 2 }}>{selectedMovie.vote_average}/10</Box>
                             </Box>

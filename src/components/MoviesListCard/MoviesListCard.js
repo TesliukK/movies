@@ -4,9 +4,10 @@ import {useDispatch} from "react-redux";
 
 import {movieAction} from "../../redux";
 import css from './moviesListCard.module.css';
+import {Box, Rating} from "@mui/material";
 
 const MoviesListCard = ({movie}) => {
-    const {original_title, poster_path} = movie;
+    const {original_title, poster_path,vote_average} = movie;
     const dispatch = useDispatch();
     const image = 'https://image.tmdb.org/t/p/w300';
 
@@ -17,6 +18,14 @@ const MoviesListCard = ({movie}) => {
             <div>
                 <img className={css.img} src={`${image}${poster_path}`} alt={original_title}/>
             </div>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Rating
+                        name="movie-rating"
+                        value={vote_average / 2}
+                        precision={0.5}
+                    />
+                    <Box sx={{ ml: 2 }}>{vote_average}/10</Box>
+                </Box>
             <div>
                 {original_title}
             </div>
