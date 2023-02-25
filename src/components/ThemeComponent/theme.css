@@ -1,0 +1,21 @@
+
+.App {
+    text-align: center;
+}
+
+.white-content {
+    background:#18191d;
+    transition-duration: 0.5s;
+    color: #F9F9F9;
+
+
+}
+.dark-content {
+    background: coral;
+}
+
+
+
+
+
+

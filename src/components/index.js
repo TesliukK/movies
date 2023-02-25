@@ -10,4 +10,4 @@ export * from './GenreListMenu/GenreListMenu';
 
 export * from './Header/Header';
 
-export * from './Theme/Theme';
+export * from './ThemeComponent/Theme';

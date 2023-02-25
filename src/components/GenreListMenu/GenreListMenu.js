@@ -13,6 +13,8 @@ const GenreListMenu = ({genre}) => {
         dispatch(genreAction.getMoviesByGenreId(id));
     };
 
+
+
     return (
         <div className={css.link}>
             <NavLink onClick={handleClick} to={'/moviesByGenre'}>{name}</NavLink>

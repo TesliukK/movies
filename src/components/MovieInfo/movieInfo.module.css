@@ -3,3 +3,8 @@
     width: 85%;
     margin-left: auto;
 }
+
+.mediumBlock {
+    display: flex;
+    justify-content: space-between;
+}
