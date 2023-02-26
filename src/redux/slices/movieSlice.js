@@ -35,6 +35,22 @@ const searchMovies = createAsyncThunk(
     }
 );
 
+const getMovieTrailer = async (movieId) => {
+    try {
+        const {data} = await movieService.getMovieVideos(movieId);
+        const trailer = data.results.find((result) => result.type === "Trailer");
+        if (trailer) {
+            return `https://www.youtube.com/watch?v=${trailer.key}`;
+        } else {
+            return "";
+        }
+    } catch (e) {
+        console.error(e);
+        return "";
+    }
+};
+
+
 const movieSlice = createSlice({
     name: "movieSlice",
     initialState,
@@ -71,6 +87,7 @@ const movieAction = {
     setSelectedMovie,
     searchMovies,
     setSearchResults,
+    getMovieTrailer
 
 };
 

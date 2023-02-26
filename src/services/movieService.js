@@ -7,6 +7,7 @@ const movieService = {
     searchMovies: (query, page = 1) => apiService.get(urls.movies.searchMovies, {
         params: {query, page},
     }),
+    getMovieVideos: (id) => apiService.get(urls.movies.movieVideos(id)),
 }
 
 export {

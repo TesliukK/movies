@@ -3,6 +3,8 @@ import {useSelector} from "react-redux";
 import {Box, Rating} from "@mui/material";
 
 import css from './movieInfo.module.css';
+import {GenreList} from "../GenreList/GenreList";
+import {GenreListMenu} from "../GenreListMenu/GenreListMenu";
 
 
 const MovieInfo = () => {
@@ -39,6 +41,14 @@ const MovieInfo = () => {
                     <div>
                         <p>{selectedMovie.overview}</p>
                     </div>
+                    <div>
+                        {selectedMovie.genres && (
+                            <div>
+                                {selectedMovie.genres.map(genre => <GenreListMenu
+                                    key={genre.id} genre={genre} genreN={'Жанри'}/>)}
+                            </div>
+                        )}
+                    </div>
                 </div>
             )}
         </div>
@@ -46,4 +56,3 @@ const MovieInfo = () => {
 };
 
 export {MovieInfo};
-
