@@ -12,13 +12,14 @@ const Theme = () => {
         <div className="App">
             <ThemeContext.Consumer>
                 {({changeTheme}) => (
-                    <button
-                        onClick={() => {
+
+                    <label className="switch">
+                        <input onClick={() => {
                             setDarkMode(!darkMode);
                             changeTheme(darkMode ? themes.light : themes.dark);
-                        }}>
-                        click
-                    </button>
+                        }} type="checkbox"/>
+                        <span className="slider"></span>
+                    </label>
                 )}
             </ThemeContext.Consumer>
         </div>

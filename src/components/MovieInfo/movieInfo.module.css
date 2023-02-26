@@ -4,7 +4,30 @@
     margin-left: auto;
 
 }
+.poster {
+    width: 250px;
+    border-radius: 7px;
+}
+.description{
+    margin-left: 70px;
+}
+
 
 .mediumBlock {
     display: flex;
+
+}
+.general {
+    box-sizing: border-box;
+    margin: 50px 70px 70px 70px;
+}
+
+.trailer {
+    display: flex;
+    justify-content: center;
+}
+.badge{
+    background: cornflowerblue;
+    padding: 10px;
+    border-radius: 7px;
 }
