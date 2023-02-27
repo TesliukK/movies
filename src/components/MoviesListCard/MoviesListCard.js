@@ -29,8 +29,7 @@ const MoviesListCard = ({movie}) => {
                     />
                     <Box sx={{ml: 2}}>{vote_average}/10</Box>
                 </Box>
-                <div>
-
+                <div className={css.title}>
                     {original_title}
                 </div>
             </NavLink>

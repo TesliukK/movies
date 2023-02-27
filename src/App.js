@@ -2,8 +2,9 @@ import React from 'react';
 import {MainLayout} from "./layouts";
 import {Navigate, Route, Routes} from "react-router-dom";
 
-import {MoviesPage} from "./page";
+import {MoviesPage, NotFoundPage} from "./page";
 import {MovieByGenre, MovieInfo, SearchResult} from "./components";
+
 
 const App = () => {
     return (
@@ -15,6 +16,7 @@ const App = () => {
                 <Route path={'/moviesByGenre'} element={<MovieByGenre/>}/>
                 <Route path={'/searchResults'} element={<SearchResult/>}/>
             </Route>
+            <Route path={'*'} element={<NotFoundPage/>}/>
         </Routes>
     );
 };

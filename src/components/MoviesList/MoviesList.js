@@ -11,7 +11,7 @@ import css from './movieList.module.css';
 const MoviesList = () => {
     const dispatch = useDispatch();
 
-    const {movies, page} = useSelector(state => state.movies);
+    const {movies, page, loading} = useSelector(state => state.movies);
 
     const [query, setQuery] = useSearchParams({page: '1'});
 
@@ -21,20 +21,23 @@ const MoviesList = () => {
 
     return (
         <div>
+            {loading && <h1>loading..........</h1>}
             <div className={css.container}>
                 {movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
             </div>
-            <div className={css.btnBlock}>
-                <Pagination
-                    count={500}
-                    onChange={(event, value) => setQuery(query => ({...query, page: value}))}
-                    disabled={page <= 0 || page >= 501}
-                    color="primary"
-                    shape="rounded"
-                    size="large"
-                    showFirstButton
-                    showLastButton
-                />
+            <div className={css.block}>
+                <div className={css.page}>
+                    <Pagination
+                        count={500}
+                        onChange={(event, value) => setQuery(query => ({...query, page: value}))}
+                        disabled={page <= 0 || page >= 501}
+                        color="primary"
+                        shape="rounded"
+                        size="large"
+                        showFirstButton
+                        showLastButton
+                    />
+                </div>
             </div>
         </div>
     );

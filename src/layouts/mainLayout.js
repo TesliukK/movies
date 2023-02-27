@@ -1,16 +1,16 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
 
-import {GenreList, Header} from "../components";
-import css from './mainLayout.module.css';
+import {Footer, GenreList, Header} from "../components";
 
 const MainLayout = () => {
 
     return (
-        <div className={css.block}>
+        <div>
             <Header/>
             <Outlet/>
             <GenreList/>
+            <Footer/>
         </div>
     );
 };

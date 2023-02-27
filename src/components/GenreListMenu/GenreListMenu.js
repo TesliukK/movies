@@ -16,9 +16,11 @@ const GenreListMenu = ({genre}) => {
 
 
     return (
-        <div className={css.link}>
-            <NavLink onClick={handleClick} to={'/moviesByGenre'}>{name}</NavLink>
-        </div>
+        <NavLink onClick={handleClick} to={'/moviesByGenre'}>
+            <div className={css.link}>
+                <b>{name}</b>
+            </div>
+        </NavLink>
     );
 };
 export {GenreListMenu};

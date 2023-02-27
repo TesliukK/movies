@@ -1,9 +1,6 @@
-/*.App {*/
-/*    text-align: center;*/
-/*}*/
 
 .white-content {
-    background:#18191d;
+    background: #18191d;
     transition-duration: 0.5s;
     color: #e9e9e9;
 }
@@ -11,7 +8,7 @@
 .white-content a {
     color: #e9e9e9;
 }
-/* The switch - the box around the slider */
+
 .switch {
     font-size: 17px;
     position: relative;
@@ -20,14 +17,12 @@
     height: 2em;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-/* The slider */
 .slider {
     position: absolute;
     cursor: pointer;

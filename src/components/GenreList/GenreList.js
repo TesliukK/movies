@@ -7,7 +7,8 @@ import css from './genreList.module.css';
 
 const GenreList = () => {
     const dispatch = useDispatch();
-    const {genres} = useSelector(state => state.genres);
+
+    const {genres, loading, errors} = useSelector(state => state.genres);
 
     useEffect(() => {
         dispatch(genreAction.getAll());
@@ -15,6 +16,8 @@ const GenreList = () => {
 
     return (
         <div className={css.block}>
+            {errors && JSON.stringify(errors)}
+            {loading && <h1>loading..........</h1>}
             {genres.map(genre => <GenreListMenu key={genre.id} genre={genre}/>)}
         </div>
     );

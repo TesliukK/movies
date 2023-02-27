@@ -1,12 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import {ThemeContext, themes} from "./themeContext";
+
+import {ThemeContext, themes} from './themeContext';
 
 const ThemeContextWrapper = (props) => {
     const [theme, setTheme] = useState(themes.dark);
 
     const changeTheme = (theme) => {
         setTheme(theme);
+        localStorage.setItem('theme', theme);
     };
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+    }, []);
 
     useEffect(() => {
         switch (theme) {
@@ -17,7 +26,6 @@ const ThemeContextWrapper = (props) => {
             default:
                 document.body.classList.remove('white-content');
                 break;
-
         }
     }, [theme]);
 
@@ -26,7 +34,6 @@ const ThemeContextWrapper = (props) => {
             {props.children}
         </ThemeContext.Provider>
     );
-}
-export {
-    ThemeContextWrapper
 };
+
+export {ThemeContextWrapper};
